@@ -52,12 +52,12 @@ a:hover {
   align-items: start;
   justify-content: space-between;
 }
-.main__login {
+.hero__login {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 395px;
+  width: 390px;
   background-color: #ffffff;
   margin-right: 20px;
 }
@@ -72,13 +72,13 @@ a:hover {
   border-top-left-radius: 12px;
 }
 .login-input {
+  border-radius: 10px;
+  border: 0.1px solid #d1c3c3;
   width: 100%;
   height: 42px;
   font-family: "K2D";
   font-weight: normal;
   outline: none;
-  padding-left: 40px;
-  padding-right: 10px;
   font-size: 2rem;
   padding-left: 40px;
   padding-right: 40px;
@@ -87,12 +87,17 @@ a:hover {
   width: 352.22px;
 }
 .login__btn {
-  margin-top: 20px;
+  margin-top: 30px;
   color: #ffffffe6;
   border-radius: 9px;
   padding: 14px 24px;
   margin-bottom: 10px;
+  display: block;
 }
+.login__btn:hover {
+  text-decoration: none;
+}
+
 /* =====login-user====== */
 .main-login__name {
   position: relative;
@@ -107,7 +112,7 @@ a:hover {
 /* =====login-passwords===== */
 .main-login__passwword {
   position: relative;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .fa-lock {
@@ -120,7 +125,12 @@ a:hover {
   right: 12px;
   position: absolute;
 }
-.main-info__title {
+
+/* ===========hero-info ===========*/
+.item__notice:visited {
+  color: #008000;
+}
+.hero-info__title {
   text-transform: capitalize;
   color: red;
   border-top-left-radius: 12px;
