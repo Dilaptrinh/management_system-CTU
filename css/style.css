@@ -25,6 +25,10 @@ a {
   background-color: #1f5ca9;
   text-align: center;
 }
+a:hover {
+  text-decoration: underline;
+  text-shadow: 0.5px 0 0 currentColor;
+}
 /* =======Header======= */
 .header {
   width: 100%;
@@ -41,6 +45,7 @@ a {
 .main {
   margin-top: 2rem;
   padding: 10px 0px;
+  margin-bottom: 20px;
 }
 .hero-body {
   display: flex;
@@ -69,7 +74,14 @@ a {
 .login-input {
   width: 100%;
   height: 42px;
+  font-family: "K2D";
+  font-weight: normal;
   outline: none;
+  padding-left: 40px;
+  padding-right: 10px;
+  font-size: 2rem;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .login__form {
   width: 352.22px;
@@ -85,14 +97,10 @@ a {
 .main-login__name {
   position: relative;
 }
-.login-input__name {
-  padding-left: 40px;
-  padding-right: 10px;
-  font-weight: bold;
-}
+
 .fa-user {
   position: absolute;
-  top: 28px;
+  top: 29px;
   left: 9px;
 }
 
@@ -101,13 +109,9 @@ a {
   position: relative;
   margin-top: 10px;
 }
-.login-input {
-  font-weight: bold;
-  padding-left: 40px;
-  padding-right: 40px;
-}
+
 .fa-lock {
-  top: 11px;
+  top: 13px;
   left: 9px;
   position: absolute;
 }
@@ -125,7 +129,7 @@ a {
   padding: 1rem;
   background: #f9f9f9;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 2rem;
   border-bottom: 1px solid #eee;
 }
 
@@ -134,6 +138,21 @@ a {
 
   /* 2. Áp dụng thuộc tính overflow để tạo thanh cuộn */
   overflow-y: scroll;
+
+  border-bottom-left-radius: 12px;
+}
+.hero__list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.hero__list::-webkit-scrollbar-track {
+  background: #f9f9f9;
+  border-bottom-right-radius: 12px;
+}
+
+.hero__list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
 }
 .item {
   border-bottom: 1px dotted #e7dede;
@@ -144,4 +163,28 @@ a {
 }
 .item__notice {
   color: #4b5563;
+}
+.main-hr {
+  height: 1px;
+  border-top: 0.1px dotted #dad0d0;
+}
+/* =======foooter========== */
+.footer {
+  min-width: 980px;
+  text-align: center;
+  padding-top: 15px;
+}
+.name-school {
+  padding: 4px;
+}
+.address {
+  padding: 4px;
+}
+.contact {
+  padding: 4px;
+}
+.footer-hr {
+  height: 1px;
+  padding-bottom: 10px;
+  border-top: 0.1px dotted #dad0d0;
 }
