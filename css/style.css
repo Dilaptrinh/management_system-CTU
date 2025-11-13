@@ -125,7 +125,7 @@ a {
   padding: 1rem;
   background: #f9f9f9;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.8rem;
   border-bottom: 1px solid #eee;
 }
 
@@ -138,7 +138,7 @@ a {
 .item {
   border-bottom: 1px dotted #e7dede;
   padding: 8px 20px;
-  font-size: 13px;
+  font-size: 1.3rem;
   width: 580px;
   background-color: #ffffff;
 }
