@@ -1,11 +1,451 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>vui lòng chờ C2DD Update thêm nhé !</h1>
-  </body>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTU Cloud Hosting - Nền Tảng Lưu Trữ Tốc Độ Cao</title>
+    <style>
+        /* --- CSS HOÀN CHỈNH --- */
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary-color: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #22c55e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header / Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #334155;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-header {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-header:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Toggle Switch (Tháng / Năm) */
+        .billing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #334155;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .badge-discount {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: var(--accent-green);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Pricing Section Grid */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        .pricing-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.1);
+        }
+
+        /* Nổi bật gói phổ biến */
+        .pricing-card.popular {
+            border-color: var(--primary-color);
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary-color);
+            color: var(--bg-color);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: normal;
+            margin-left: 0.25rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .features-list li.disabled {
+            color: #64748b;
+        }
+
+        .features-list li.disabled::before {
+            content: "✕";
+            color: #64748b;
+        }
+
+        .btn-order {
+            width: 100%;
+            background-color: #334155;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pricing-card.popular .btn-order, 
+        .btn-order:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid #334155;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">⚡ CTU.CLOUD</div>
+        <nav>
+            <ul>
+                <li><a href="#">Hosting</a></li>
+                <li><a href="#">VPS Server</a></li>
+                <li><a href="#">Tên Miền</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+            </ul>
+        </nav>
+        <button class="btn-header">Đăng Nhập</button>
+    </header>
+
+    <section class="hero">
+        <h1>Cloud Hosting Tốc Độ Cao</h1>
+        <p>Hệ thống lưu trữ NVMe siêu tốc, hạ tầng bảo mật tối đa tối ưu riêng cho mã nguồn Web của bạn.</p>
+        
+        <div class="billing-toggle">
+            <span>Thanh toán theo Tháng</span>
+            <label class="switch">
+                <input type="checkbox" id="billing-switch">
+                <span class="slider"></span>
+            </label>
+            <span>Thanh toán theo Năm</span>
+            <span class="badge-discount">Tiết kiệm 20%</span>
+        </div>
+    </section>
+
+    <main class="pricing-container">
+        
+        <div class="pricing-card">
+            <div class="card-header">
+                <h3>Gói Học Tập</h3>
+                <p>Phù hợp cho đồ án, học tập nghiên cứu thử nghiệm web.</p>
+            </div>
+            <div class="price">
+                <div id="price-student">29.000</div><span>đ/tháng</span>
+            </div>
+            <ul class="features-list">
+                <li><b>1</b> Website</li>
+                <li><b>10 GB</b> Ổ cứng NVMe</li>
+                <li><b>Unmetered</b> Băng thông</li>
+                <li>Miễn phí SSL Let's Encrypt</li>
+                <li class="disabled">Không có Backup hàng ngày</li>
+                <li class="disabled">Không hỗ trợ Redis/Memcached</li>
+            </ul>
+            <button class="btn-order" onclick="orderHosting('Học Tập')">Đăng Ký Ngay</button>
+        </div>
+
+        <div class="pricing-card popular">
+            <div class="popular-badge">Phổ Biến Nhất</div>
+            <div class="card-header">
+                <h3>Gói Chuyên Nghiệp</h3>
+                <p>Tối ưu tuyệt vời cho các web bán hàng, landing page doanh nghiệp.</p>
+            </div>
+            <div class="price">
+                <div id="price-pro">89.000</div><span>đ/tháng</span>
+            </div>
+            <ul class="features-list">
+                <li><b>5</b> Websites</li>
+                <li><b>40 GB</b> Ổ cứng NVMe</li>
+                <li><b>Unmetered</b> Băng thông</li>
+                <li>Miễn phí SSL Let's Encrypt</li>
+                <li>Tự động Backup hàng ngày</li>
+                <li class="disabled">Không hỗ trợ Redis/Memcached</li>
+            </ul>
+            <button class="btn-order" onclick="orderHosting('Chuyên Nghiệp')">Đăng Ký Ngay</button>
+        </div>
+
+        <div class="pricing-card">
+            <div class="card-header">
+                <h3>Gói Cao Cấp</h3>
+                <p>Dành riêng cho các hệ thống lớn, lượng truy cập cao khủng.</p>
+            </div>
+            <div class="price">
+                <div id="price-enterprise">199.000</div><span>đ/tháng</span>
+            </div>
+            <ul class="features-list">
+                <li><b>Không giới hạn</b> Website</li>
+                <li><b>100 GB</b> Ổ cứng NVMe chuyên dụng</li>
+                <li><b>Unmetered</b> Băng thông</li>
+                <li>Miễn phí SSL Let's Encrypt</li>
+                <li>Tự động Backup hàng ngày</li>
+                <li>Hỗ trợ full Redis, Memcached, Node.js</li>
+            </ul>
+            <button class="btn-order" onclick="orderHosting('Cao Cấp')">Đăng Ký Ngay</button>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 CTU Cloud Infrastructure. Toàn bộ hạ tầng được phân phối tự động.</p>
+    </footer>
+
+    <script>
+        // Định nghĩa giá gốc theo từng tháng của các gói
+        const basePrices = {
+            student: 29000,
+            pro: 89000,
+            enterprise: 199000
+        };
+
+        const toggle = document.getElementById('billing-switch');
+        const priceStudent = document.getElementById('price-student');
+        const pricePro = document.getElementById('price-pro');
+        const priceEnterprise = document.getElementById('price-enterprise');
+
+        // Hàm format số tiền sang định dạng có chấm phân cách (Ví dụ: 29.000)
+        function formatMoney(amount) {
+            return amount.toLocaleString('vi-VN');
+        }
+
+        // Lắng nghe sự kiện gạt nút chọn Tháng / Năm
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                // Nếu chọn theo Năm: Tính tổng 12 tháng và giảm giá 20%
+                const studentYearly = Math.round((basePrices.student * 12) * 0.8 / 12);
+                const proYearly = Math.round((basePrices.pro * 12) * 0.8 / 12);
+                const enterpriseYearly = Math.round((basePrices.enterprise * 12) * 0.8 / 12);
+
+                priceStudent.innerText = formatMoney(studentYearly);
+                pricePro.innerText = formatMoney(proYearly);
+                priceEnterprise.innerText = formatMoney(enterpriseYearly);
+                
+                // Đổi nhãn hiển thị text đi kèm nếu cần, ở đây giữ nguyên tính trung bình theo tháng của gói năm
+            } else {
+                // Nếu chọn theo Tháng: Trả về giá mặc định gốc
+                priceStudent.innerText = formatMoney(basePrices.student);
+                pricePro.innerText = formatMoney(basePrices.pro);
+                priceEnterprise.innerText = formatMoney(basePrices.enterprise);
+            }
+        });
+
+        // Hàm thông báo khi click nút Đăng ký
+        function orderHosting(packageName) {
+            const type = toggle.checked ? "Năm (Đã giảm 20%)" : "Tháng";
+            alert(`Bạn đã chọn đăng ký cấu hình: Gói ${packageName}\nHình thức thanh toán: Theo ${type}.\nHệ thống đang khởi tạo hóa đơn thanh toán tự động...`);
+        }
+    </script>
+</body>
 </html>
