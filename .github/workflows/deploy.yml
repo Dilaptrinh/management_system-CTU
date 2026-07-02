@@ -28,7 +28,7 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./*"
-          target: "/var/www/hosting-site"
+          target: "/var/www/ctu"
 
       # Bước 4: SSH vào Server phát lệnh tải lại cấu hình NGINX
       - name: Reload NGINX Web Server
